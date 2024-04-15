@@ -1,8 +1,8 @@
 CREATE TABLE `clicks` (
-  `click_id` VARCHAR(2147483647) NOT NULL,
+  `click_id` STRING NOT NULL,
   `user_id` INT NOT NULL,
-  `url` VARCHAR(2147483647) NOT NULL,
-  `user_agent` VARCHAR(2147483647) NOT NULL,
+  `url` STRING NOT NULL,
+  `user_agent` STRING NOT NULL,
   `view_time` INT NOT NULL,
   `$rowtime` TIMESTAMP(3),
   WATERMARK FOR `$rowtime` AS `$rowtime` - INTERVAL '5' SECOND
@@ -19,11 +19,11 @@ CREATE TABLE `clicks` (
 
 CREATE TABLE `customers` (
   `customer_id` INT NOT NULL,
-  `name` VARCHAR(2147483647) NOT NULL,
-  `address` VARCHAR(2147483647) NOT NULL,
-  `postcode` VARCHAR(2147483647) NOT NULL,
-  `city` VARCHAR(2147483647) NOT NULL,
-  `email` VARCHAR(2147483647) NOT NULL,
+  `name` STRING NOT NULL,
+  `address` STRING NOT NULL,
+  `postcode` STRING NOT NULL,
+  `city` STRING NOT NULL,
+  `email` STRING NOT NULL,
   `$rowtime` TIMESTAMP(3),
   WATERMARK FOR `$rowtime` AS `$rowtime` - INTERVAL '5' SECOND,
   PRIMARY KEY (`customer_id`) NOT ENFORCED
@@ -40,9 +40,9 @@ CREATE TABLE `customers` (
 );
 
 CREATE TABLE `orders` (
-  `order_id` VARCHAR(2147483647) NOT NULL,
+  `order_id` STRING NOT NULL,
   `customer_id` INT NOT NULL,
-  `product_id` VARCHAR(2147483647) NOT NULL,
+  `product_id` STRING NOT NULL,
   `price` DOUBLE NOT NULL,
   `$rowtime` TIMESTAMP(3),
   WATERMARK FOR `$rowtime` AS `$rowtime` - INTERVAL '5' SECOND
@@ -57,11 +57,11 @@ CREATE TABLE `orders` (
 );
 
 CREATE TABLE `products` (
-  `product_id` VARCHAR(2147483647) NOT NULL,
-  `name` VARCHAR(2147483647) NOT NULL,
-  `brand` VARCHAR(2147483647) NOT NULL,
-  `vendor` VARCHAR(2147483647) NOT NULL,
-  `department` VARCHAR(2147483647) NOT NULL,
+  `product_id` STRING NOT NULL,
+  `name` STRING NOT NULL,
+  `brand` STRING NOT NULL,
+  `vendor` STRING NOT NULL,
+  `department` STRING NOT NULL,
   `$rowtime` TIMESTAMP(3),
   WATERMARK FOR `$rowtime` AS `$rowtime` - INTERVAL '5' SECOND,
   PRIMARY KEY (`product_id`) NOT ENFORCED
